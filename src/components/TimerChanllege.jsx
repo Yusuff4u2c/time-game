@@ -12,13 +12,16 @@ const TimerChallenge = ({ title, targetTime }) => {
 
     dialog.current.open();
   }
+
   const resetTimer = () => {
     setTimeRemaining(targetTime * 1000);
   };
+
   function handleStartChallenge() {
+    clearInterval(timer.current);
     timer.current = setInterval(() => {
       setTimeRemaining((prevTime) => prevTime - 10);
-    }, targetTime * 10);
+    }, 10);
   }
 
   function handleStopChallenge() {
